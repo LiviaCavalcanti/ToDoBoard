@@ -1,0 +1,9 @@
+const express = require("express");
+const routes = express.Router()
+
+const BoardController = require('./controllers/BoardController')
+
+routes.get('/', BoardController.index)
+routes.post('/', BoardController.store)
+
+module.exports = routes
