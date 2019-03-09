@@ -9,3 +9,5 @@ const ActivitySchema = new mongoose.Schema({
         type: String
     }
 })
+
+mongoose.model('Activity', ActivitySchema)
