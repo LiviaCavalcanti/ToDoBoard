@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const ActivityBunch = mongoose.model('ActivityBunch')
 
-model.exports = {
+module.exports = {
     async index(req, res) {
         const activities = await ActivityBunch.find()
 

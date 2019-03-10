@@ -6,6 +6,9 @@ const requireDir = require("require-dir")
 const app = express();
 app.use(express.json()) // permitir o envio de dados json
 
+mongoose.connect('mongodb://localhost:27017/nodeapi', { useNewUrlParser: true})
+requireDir('./src/models')
+
 //rotas
 app.use('/api', require('./src/route'))
 
