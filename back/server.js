@@ -10,6 +10,6 @@ mongoose.connect('mongodb://localhost:27017/nodeapi', { useNewUrlParser: true})
 requireDir('./src/models')
 
 //rotas
-app.use('/api', require('./src/route'))
+app.use('/', require('./src/route'))
 
 app.listen(3001);
