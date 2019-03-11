@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 
+import Teste from './pages/main/index'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-      </div>
-    );
-  }
+export default class App extends Component {
+
+render(){
+  return (
+    <div className="App">
+      <Teste/>
+    </div>
+  );
 }
 
-export default App;
+}
+
