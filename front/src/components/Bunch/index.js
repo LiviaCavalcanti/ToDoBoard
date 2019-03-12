@@ -5,44 +5,32 @@ import Activity from '../Activity'
 
 export default class Bunch extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            bunches: []
+            title: "",
+            description: "",
+            activities: []
         }
-
-        this.loadBunches = this.loadBunches.bind(this)
-    }
-
-    componentDidMount() {
-        this.loadBunches();
-    }
-
-    loadBunches = async () => {
-        const response = await api.get('/bunch')
-
-
-
-        this.setState({ bunches: response.data})
     }
 
     render() {
+        const { title, description, activities } = this.state
         return (
             <div className="bunch-list">
-            <h1>Ola</h1>
-
-                { this.state.bunches.map(bunch => (
-                    <div key={bunch._id}>
-                    <p>{bunch.title}</p>
-                    <p>{bunch.description}</p>
-                    <p>{bunch.activityBunch.map( activity => (
-                        <Activity>{activity}</Activity>
-                    ))}</p>
-                    </div>
-                    
-            )) }
+                <div key={bunch._id}>
+                <p>{title}</p>
+                <p>{description}</p>
+                <p>{activities.map( activity => (
+                    <Activity>{activity}</Activity>
+                ))}</p>
+                <button onClick={this.addActivity}>Activity +</button>
+                </div>
+                
             </div>
         )
     }
+
+    
 }
 
