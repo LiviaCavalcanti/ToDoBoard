@@ -7,7 +7,7 @@ const ActivityBunchSchema = new mongoose.Schema({
     description:{
         type: String
     },
-    activity: [{ 
+    activityBunch: [{ 
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Activity' }]
 })
