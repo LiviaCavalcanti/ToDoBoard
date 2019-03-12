@@ -12,6 +12,12 @@ export default class Bunch extends Component {
             description: "",
             activities: []
         }
+
+        this.addActivity = this.addActivity.bind(this)
+    }
+
+    addActivity = async () => {
+
     }
 
     render() {
