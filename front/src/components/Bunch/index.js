@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import api from '../services/api'
+import api from '../../services/api'
+import Activity from '../Activity'
 
 export default class Bunch extends Component {
 
@@ -18,7 +19,7 @@ export default class Bunch extends Component {
     }
 
     loadBunches = async () => {
-        const response = await api.get('/')
+        const response = await api.get('/bunch')
 
 
 
@@ -30,11 +31,15 @@ export default class Bunch extends Component {
             <div className="bunch-list">
             <h1>Ola</h1>
 
-                          { this.state.bunches.map(bunch => (
-                              <div key={bunch._id}>
-                              <p>{bunch.title}</p>
-                              <p>{bunch.description}</p>
-                              </div>
+                { this.state.bunches.map(bunch => (
+                    <div key={bunch._id}>
+                    <p>{bunch.title}</p>
+                    <p>{bunch.description}</p>
+                    <p>{bunch.activityBunch.map( activity => (
+                        <Activity>{activity}</Activity>
+                    ))}</p>
+                    </div>
+                    
             )) }
             </div>
         )
