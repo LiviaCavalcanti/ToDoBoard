@@ -24,15 +24,12 @@ export default class Bunch extends Component {
         const { title, description, activities } = this.state
         return (
             <div className="bunch-list">
-                <div key={bunch._id}>
                 <p>{title}</p>
                 <p>{description}</p>
                 <p>{activities.map( activity => (
                     <Activity>{activity}</Activity>
                 ))}</p>
                 <button onClick={this.addActivity}>Activity +</button>
-                </div>
-                
             </div>
         )
     }
