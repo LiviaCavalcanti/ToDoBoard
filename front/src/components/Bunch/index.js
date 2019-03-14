@@ -7,29 +7,24 @@ export default class Bunch extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            title: "",
-            description: "",
-            activities: []
-        }
-
         this.addActivity = this.addActivity.bind(this)
     }
-
-    addActivity = async () => {
-
+// Tirei o async por enquanto
+    addActivity =  (id) => {
+        console.log(id)
     }
 
+
     render() {
-        const { title, description, activities } = this.state
         return (
             <div className="bunch-list">
-                <p>{title}</p>
-                <p>{description}</p>
-                <p>{activities.map( activity => (
+
+                <p>{this.props.title}</p>
+                <p>{this.props.description}</p>
+                <p>{this.props.activity.map( activity => (
                     <Activity>{activity}</Activity>
                 ))}</p>
-                <button onClick={this.addActivity}>Activity +</button>
+                <button onClick={(e) => {this.addActivity(this.props.id, e)}}>Activity +</button>
             </div>
         )
     }

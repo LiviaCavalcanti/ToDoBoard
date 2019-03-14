@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import api from '../../services/api'
-import Activity from '../Bunch'
+import Bunch from '../Bunch'
 
 export default class Board extends Component {
     constructor(props){
@@ -25,18 +25,15 @@ export default class Board extends Component {
         this.setState({ bunches: response.data})
     }
 
-    onClick = () => {
-        this.Bunch.addActivity()
-    }
-
     render() {
         return (
             <div className="bunch-list">
             <h1>Ola</h1>
+            {console.log(this.state.bunches)}
 
                 { this.state.bunches.map(bunch => (
                     <div key={bunch._id}>
-                        <Bunch>{ bunch }</Bunch>
+                        <Bunch id={bunch._id} title={bunch.title} description={bunch.description} activity={bunch.activityBunch} >{ bunch }</Bunch>
                     </div>
                     
                 )) }
