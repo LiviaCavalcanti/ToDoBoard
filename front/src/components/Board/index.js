@@ -20,7 +20,7 @@ export default class Board extends Component {
     loadBunches = async () => {
         const response = await api.get('/bunch')
 
-
+        console.log(response.data)
 
         this.setState({ bunches: response.data})
     }
@@ -33,7 +33,7 @@ export default class Board extends Component {
 
                 { this.state.bunches.map(bunch => (
                     <div key={bunch._id}>
-                        <Bunch id={bunch._id} title={bunch.title} description={bunch.description} activity={bunch.activityBunch} >{ bunch }</Bunch>
+                        <Bunch id={bunch._id} title={bunch.title} description={bunch.description} activity={bunch.activityBrunch} >{ bunch }</Bunch>
                     </div>
                     
                 )) }

@@ -6,10 +6,7 @@ const ActivityBunchSchema = new mongoose.Schema({
     },
     description:{
         type: String
-    },
-    activityBunch: [{ 
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Activity' }]
+    }
 })
 
 mongoose.model('ActivityBunch', ActivityBunchSchema)
