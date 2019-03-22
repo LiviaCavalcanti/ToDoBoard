@@ -4,9 +4,17 @@ const ActivityBunch = mongoose.model('ActivityBunch')
 
 module.exports = {
     async index(req, res) {
-        const bunches = await ActivityBunch.find()
 
-        return res.json(bunches)
+        completeBunches = []
+
+        await ActivityBunch.find()
+                            .populate("activityBunch")
+                            .exec()
+                            .then(docs =>{
+                                docs.map(bunch => completeBunches.push(bunch))
+                            })
+
+        return res.json(completeBunches)
     },
     async store(req, res) {
         const bunch = await ActivityBunch.create(req.body)
