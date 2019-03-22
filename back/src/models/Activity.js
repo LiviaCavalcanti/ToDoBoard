@@ -7,6 +7,10 @@ const ActivitySchema = new mongoose.Schema({
     },
     description:{
         type: String
+    },
+    bunchid:{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "ActivityBunch"
     }
 })
 

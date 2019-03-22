@@ -17,5 +17,18 @@ module.exports = {
         const bunch = await ActivityBunch.findByIdAndUpdate(req.params.id, req.body, { new: true})
 
         return res.json(bunch)
+    },
+    async findBunch(req,res) {
+        const bunch = await ActivityBunch
+                            .findById(req.params.id)
+                            .populate("activityBunch")
+                            .exec((err, findedBunch) => {
+                                if(err){
+                                    // tratar erro
+                                } else {
+                                    return res.json(findedBunch)
+                                }
+                            })
+
     }
 }
