@@ -31,7 +31,7 @@ module.exports = {
         return res.json(activity)
     },
     async destroy(req, res) {
-        await Activity.findAndRemove({ _bunchId: req.params.bunchId, _id: req.params.activityId })
+        await Activity.findOneAndDelete({ _bunchId: req.params.bunchId, _id: req.params.activityId })
 
         return res.send()
     }
