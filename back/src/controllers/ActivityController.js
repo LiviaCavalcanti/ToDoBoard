@@ -17,11 +17,13 @@ module.exports = {
     },
     async store(req, res) {
         
-        const activity = await Activity.create(req.body)    
+        const activity = new Activity (req.body)    
+        activity._bunchId = req.params.bunchId
+        activity.save(function (err) {
+            if (err) return handleError(err);
+        }) 
         
-        const act = Activity.findByIdAndUpdate(activity._id, _bunchId: req.params.bunchId, {new: true})
-        console.log(act)
-        return res.json(act)
+        return res.json(activity)
     },
     async update(req, res) {
         const activity = await Activity.findOneAndUpdate({ _bunchId: req.params.bunchId, _id: req.params.activityId }, req.body, { new : true })
