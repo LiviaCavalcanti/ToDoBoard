@@ -1,25 +1,11 @@
 import React, { Component } from 'react'
 
-import api from '../../services/api'
-
 export default class Activity extends Component {
-    state = {
-        activity: {}
-    }
-
-    async componentDidMount() {
-        const response = await api.get('/activity/${id}')
-
-        this.setState({ activity: response.data })
-    }
-
     render() {
-        const { activity } = this.state
-
         return (
             <div className="product-info">
-                <h4>{activity.title}</h4>
-                <p>{activity.description}</p>
+                <h4>{this.props.title}</h4>
+                <p>{this.props.description}</p>
             </div>
         )
     }

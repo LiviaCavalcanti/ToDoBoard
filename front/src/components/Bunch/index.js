@@ -36,7 +36,7 @@ export default class Bunch extends Component {
                     <p>{bunch.title}</p>
                     <p>{bunch.description}</p>
                     <p>{bunch.activityBunch.map( activity => (
-                        <Activity>{activity}</Activity>
+                        <Activity title={activity.title} description={activity.description}/>
                     ))}</p>
                     </div>
                     
