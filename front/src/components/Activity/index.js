@@ -8,8 +8,6 @@ export default class Activity extends Component {
     }
 
     async componentDidMount() {
-        const { id } = this.props.match.params
-
         const response = await api.get('/activity/${id}')
 
         this.setState({ activity: response.data })
