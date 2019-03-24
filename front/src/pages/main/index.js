@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-import Bunch from '../../components/Bunch/index'
+import Board from '../../components/Board';
 
 export default class Main extends Component {
     render() {
         return (
-            <Bunch/>
+            <Board/>
         )
     }
 }
