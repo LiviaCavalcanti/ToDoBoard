@@ -9,11 +9,13 @@ export default class Bunch extends Component {
         return (
             <div className="bunch">
                 
-                    <p>{this.props.title}</p>
+                    <h2>{this.props.title}</h2>
                     <p>{this.props.description}</p>
-                    <p>{this.props.activityBunch.map( activity => (
+                    {this.props.activityBunch.map( activity => (
+                        <div key={activity._id}>
                         <Activity title={activity.title} description={activity.description}/>
-                    ))}</p>
+                        </div>
+                    ))}
                 
             </div>
         )
