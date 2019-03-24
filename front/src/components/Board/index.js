@@ -36,7 +36,7 @@ export default class Board extends Component {
         return (
             <VerticalLayout>
                 <Panel>
-                    <div className='bunch-list'>
+                    <div className='board'>
                     <HorizontalLayout>
                         { this.state.bunches.map(bunch => (
                                 <div key={bunch._id}>
