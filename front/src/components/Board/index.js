@@ -2,6 +2,14 @@ import React, { Component } from 'react'
 import api from '../../services/api';
 
 import Bunch from '../Bunch'
+import '../Bunch/style.css'
+
+import { HorizontalLayout,
+    VerticalLayout,
+    Panel,
+    Separator,
+    Spacer,
+    View } from "nice-react-layout";
 
 export default class Board extends Component {
 
@@ -26,14 +34,23 @@ export default class Board extends Component {
 
     render() {
         return (
-                <div className='bunch-list'>
-                { this.state.bunches.map(bunch => (
-                        <div key={bunch._id}>
-                            <Bunch title={bunch.title} description={bunch.description} activityBunch={bunch.activityBunch}/>
-                        </div>
-                    ))
-                    }
-                </div>
+            <VerticalLayout>
+                <Panel>
+                    <div className='bunch-list'>
+                    <HorizontalLayout>
+                        { this.state.bunches.map(bunch => (
+                                <div key={bunch._id}>
+                                <Panel>
+                                    <Bunch title={bunch.title} description={bunch.description} activityBunch={bunch.activityBunch}/>
+                                </Panel>
+                                </div>
+                            ))
+                        }
+                    </HorizontalLayout>    
+                    
+                    </div>
+                </Panel>
+            </VerticalLayout>
         )
     }
 }
