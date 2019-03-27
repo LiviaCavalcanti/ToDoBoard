@@ -29,7 +29,7 @@ module.exports = {
         return res.json(activity)
     },
     async update(req, res) {
-        const activity = await Activity.findById(req.params.id, req.body, { new : true })
+        const activity = await Activity.findByIdAndUpdate(req.params.id, req.body, { new : true })
 
         return res.json(activity)
     },
