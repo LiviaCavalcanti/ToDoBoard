@@ -10,25 +10,37 @@ export default class Activity extends Component {
         super(props, context);
     
         this.handleFormShow = this.handleFormShow.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-        this.editActivity = this.editActivity.bind(this);
+				this.handleClose = this.handleClose.bind(this);
+				this.handleModalShow = this.handleModalShow.bind(this);
+        this.handleModalClose = this.handleModalClose.bind(this);
+				this.editActivity = this.editActivity.bind(this);
+				this.deleteActivity = this.deleteActivity.bind(this);
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
 
 
 
         this.state = {
-          show: false,
+					showEditModal: false,
+					showDeleteModal: false,
           newTitle: "",
           newDescription: ""
         };
       }
     
       handleClose() {
-        this.setState({ show: false });
+        this.setState({ showEditModal: false });
       }
     
       handleFormShow() {
-        this.setState({ show: true });
+        this.setState({ showEditModal: true });
+      }
+
+      handleModalClose() {
+        this.setState({ showDeleteModal: false });
+      }
+    
+      handleModalShow() {
+        this.setState({ showDeleteModal: true });
       }
     
     editActivity = async () => {
@@ -40,9 +52,17 @@ export default class Activity extends Component {
 
         await api.put(`/activity/${this.props.id}`, newActivity)
 
-        this.setState({show:false})
+        this.setState({showEditModal:false})
 
-    }
+		}
+		
+		deleteActivity = async () => {
+       
+			await api.delete(`/activity/${this.props.id}`)
+
+			this.setState({showEditModal:false})
+
+	}
 
     handleChangeTitle = (e) =>{
         this.setState({newTitle: e.target.value})
@@ -56,14 +76,31 @@ export default class Activity extends Component {
     render() {
         return (
             <div className="activity">
-
+								<h4>{this.props.title}</h4>
+                <p>{this.props.description}</p>
              <>
                 <DropdownButton title='...' variant="primary" >
                     <Dropdown.Item onClick={this.handleFormShow}>Editar atividade</Dropdown.Item>
-                    {/* <Dropdown.Item onClick={this.handleFormShow}>Editar atividade</Dropdown.Item> */}
+                    <Dropdown.Item onClick={this.handleModalShow}>Exluir atividade</Dropdown.Item>
                 </DropdownButton>
 
-                <Modal show={this.state.show} onHide={this.handleClose}>
+
+                <Modal show={this.state.showDeleteModal} onHide={this.handleModalClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Apagar Atividade</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <p>Modal body text goes here.</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.handleModalClose}>Cancelar</Button>
+                        <Button variant="primary" onClick={this.deleteActivity}>Apagar</Button>
+                    </Modal.Footer>
+                </Modal>
+
+                <Modal show={this.state.showEditModal} onHide={this.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Editar atividade</Modal.Title>
                 </Modal.Header>
@@ -90,10 +127,10 @@ export default class Activity extends Component {
 
                 </Modal.Footer>
                 </Modal>
+
             </>
 
-                <h4>{this.props.title}</h4>
-                <p>{this.props.description}</p>
+
             </div>
         )
     }
