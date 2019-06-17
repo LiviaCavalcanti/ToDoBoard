@@ -20,6 +20,7 @@ export default class Board extends Component {
         }
 
         this.loadBunches = this.loadBunches.bind(this)
+        this.handleUpdate = this.handleUpdate.bind(this)
     }
 
     componentDidMount() {
@@ -32,6 +33,14 @@ export default class Board extends Component {
         this.setState({ bunches: response.data })
     }
 
+    handleUpdate = async (newActivity) => {
+        const activityId = this.state.bunches.findIndex(( bunch => bunch.id == newActivity.id))
+        const bunches = [...this.state.bunches]
+        bunches[activityId] = newActivity
+        this.setState({bunches})
+
+    }
+
     render() {
         return (
             <VerticalLayout>
@@ -41,7 +50,7 @@ export default class Board extends Component {
                         { this.state.bunches.map(bunch => (
                                 <div key={bunch._id}>
                                 <Panel>
-                                    <Bunch title={bunch.title} description={bunch.description} activityBunch={bunch.activityBunch}/>
+                                    <Bunch title={bunch.title} description={bunch.description} activityBunch={bunch.activityBunch} updatingActivity={this.handleUpdate}/>
                                 </Panel>
                                 </div>
                             ))

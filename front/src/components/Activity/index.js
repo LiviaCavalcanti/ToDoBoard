@@ -9,9 +9,8 @@ export default class Activity extends Component {
     constructor(props, context) {
         super(props, context);
     
-        this.handleShow = this.handleShow.bind(this);
+        this.handleFormShow = this.handleFormShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
-     //   this.auxFunction = this.auxFunction.bind(this);
         this.editActivity = this.editActivity.bind(this);
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
 
@@ -28,7 +27,7 @@ export default class Activity extends Component {
         this.setState({ show: false });
       }
     
-      handleShow() {
+      handleFormShow() {
         this.setState({ show: true });
       }
     
@@ -39,9 +38,7 @@ export default class Activity extends Component {
             description: this.state.newDescription
         }
 
-       const response =  await api.put(`/activity/${this.props.id}`, newActivity)
-
-       this.props.rerenderParentCallback()
+        await api.put(`/activity/${this.props.id}`, newActivity)
 
         this.setState({show:false})
 
@@ -62,7 +59,8 @@ export default class Activity extends Component {
 
              <>
                 <DropdownButton title='...' variant="primary" >
-                    <Dropdown.Item onClick={this.handleShow}>Editar atividade</Dropdown.Item>
+                    <Dropdown.Item onClick={this.handleFormShow}>Editar atividade</Dropdown.Item>
+                    {/* <Dropdown.Item onClick={this.handleFormShow}>Editar atividade</Dropdown.Item> */}
                 </DropdownButton>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
@@ -80,7 +78,7 @@ export default class Activity extends Component {
                                 <Form.Control type="text" placeholder="Descrição da atividade" onChange={this.handleChangeDescription} />
                             </Form.Group>
 
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" onClick={this.editActivity}>
                                 Salvar
                             </Button>
                         </Form>
@@ -89,9 +87,7 @@ export default class Activity extends Component {
                     <Button variant="secondary" onClick={this.handleClose}>
                     Close
                     </Button>
-                    <Button variant="primary" onClick={this.editActivity}>
-                    Save Changes
-                    </Button>
+
                 </Modal.Footer>
                 </Modal>
             </>
