@@ -4,7 +4,7 @@ import api from '../../services/api';
 import Bunch from '../Bunch'
 import '../Bunch/style.css'
 
-import { DropdownButton, Dropdown, Form, Button, Modal } from 'react-bootstrap'
+import {  Form, Button, Modal } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { HorizontalLayout,
@@ -84,9 +84,9 @@ export default class Board extends Component {
                         <div className='board'>
                         <HorizontalLayout>
                             { this.state.bunches.map(bunch => (
-                                    <div key={bunch._id}>
+                                        <div key={bunch._id}>
                                     <Panel>
-                                        <Bunch title={bunch.title} description={bunch.description} activityBunch={bunch.activityBunch} updatingActivity={this.handleUpdate}/>
+                                        <Bunch title={bunch.title} description={bunch.description} activityBunch={bunch.activityBunch} id={bunch._id}updatingActivity={this.handleUpdate}/>
                                     </Panel>
                                     </div>
                                 ))
