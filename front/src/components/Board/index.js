@@ -19,16 +19,16 @@ export default class Board extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            showAddActivityModal: false,
+            showAddBunchModal: false,
             bunches: [],
-            newActivityTitle: "",
-            newActivityDescription: ""
+            newBunchTitle: "",
+            newBunchDescription: ""
         }
 
         this.loadBunches = this.loadBunches.bind(this)
         this.handleUpdate = this.handleUpdate.bind(this)
-        this.handleAddActivityClose = this.handleAddActivityClose.bind(this)
-        this.handleAddActivityShow = this.handleAddActivityShow.bind(this)
+        this.handleAddBunchClose = this.handleAddBunchClose.bind(this)
+        this.handleAddBunchShow = this.handleAddBunchShow.bind(this)
     }
 
     componentDidMount() {
@@ -49,31 +49,31 @@ export default class Board extends Component {
 
     }
 
-    handleAddActivity = async () => {
-        const newActivity = {
-            title: this.state.newActivityTitle,
-            description: this.state.newActivityDescription
+    handleAddBunch = async () => {
+        const newBunch = {
+            title: this.state.newBunchTitle,
+            description: this.state.newBunchDescription
         }
 
-        await api.post(`/activity/${this.state.bunchID}`, newActivity)
+        await api.post('/bunch/', newBunch)
 
         this.setState({showEditModal:false})
     }
 
-    handleAddActivityClose() {
-        this.setState({ showAddActivityModal: false });
+    handleAddBunchClose() {
+        this.setState({ showAddBunchModal: false });
     }
     
-      handleAddActivityShow() {
-        this.setState({ showAddActivityModal: true });
+      handleAddBunchShow() {
+        this.setState({ showAddBunchModal: true });
     }
 
       handleChangeTitle = (e) =>{
-        this.setState({newActivityTitle: e.target.value})
+        this.setState({newBunchTitle: e.target.value})
     }
 
     handleChangeDescription = (e) =>{
-        this.setState({newActivityDescription: e.target.value})
+        this.setState({newBunchDescription: e.target.value})
     }
 
     render() {
@@ -97,42 +97,33 @@ export default class Board extends Component {
                     </Panel>
                 </VerticalLayout>
 
-                <Button  onClick={this.handleAddActivityShow}>
-                    Adicionar Atividade
+                <Button  onClick={this.handleAddBunchShow}>
+                    Adicionar Bunch
                 </Button>
 
-                <Modal show={this.state.showAddActivityModal} onHide={this.handleAddActivityClose}>
+                <Modal show={this.state.showAddBunchModal} onHide={this.handleAddBunchClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Editar atividade</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 <Form>
                             <Form.Label>Titulo</Form.Label>
-                            <Form.Control type="text" placeholder="Titulo da atividade" onChange={this.handleChangeTitle} />
+                            <Form.Control type="text" placeholder="Titulo do bunch" onChange={this.handleChangeTitle} />
                                 
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Descrição</Form.Label>
-                                <Form.Control type="text" placeholder="Descrição da atividade" onChange={this.handleChangeDescription} />
+                                <Form.Control type="text" placeholder="Descrição do bunch" onChange={this.handleChangeDescription} />
                             </Form.Group>
-                            <DropdownButton>
-                                {this.state.bunches.map(
-                                    bunchItem => (
-                                        <Dropdown.Item eventKey={bunchItem.id}>
-                                            {bunchItem.title}                                            
-                                        </Dropdown.Item>
 
-                                ))}
-
-                            </DropdownButton>
                             
-                            <Button variant="primary" type="submit" onClick={this.handleAddActivity}>
+                            <Button variant="primary" type="submit" onClick={this.handleAddBunch}>
                                 Criar
                             </Button>
                         </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleAddActivityClose}>
+                    <Button variant="secondary" onClick={this.handleAddBunchClose}>
                     Close
                     </Button>
 
