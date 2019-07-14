@@ -1,0 +1,8 @@
+.backPaper {
+    max-width: 1900px;
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
