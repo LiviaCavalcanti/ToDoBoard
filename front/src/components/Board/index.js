@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import api from '../../services/api';
 
 import Bunch from '../Bunch'
-import '../Bunch/style.css'
+
 
 import {  Form, Button, Modal } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css'
 
 import { HorizontalLayout,
     VerticalLayout,
@@ -13,6 +14,7 @@ import { HorizontalLayout,
     Separator,
     Spacer,
     View } from "nice-react-layout";
+import SideBar from '../SideBar';
 
 export default class Board extends Component {
 
@@ -26,7 +28,6 @@ export default class Board extends Component {
         }
 
         this.loadBunches = this.loadBunches.bind(this)
-        this.handleUpdate = this.handleUpdate.bind(this)
         this.handleAddBunchClose = this.handleAddBunchClose.bind(this)
         this.handleAddBunchShow = this.handleAddBunchShow.bind(this)
     }
@@ -39,14 +40,6 @@ export default class Board extends Component {
         const response = await api.get('/bunch')
 
         this.setState({ bunches: response.data })
-    }
-
-    handleUpdate = async (newActivity) => {
-        const activityId = this.state.bunches.findIndex(( bunch => bunch.id == newActivity.id))
-        const bunches = [...this.state.bunches]
-        bunches[activityId] = newActivity
-        this.setState({bunches})
-
     }
 
     handleAddBunch = async () => {
@@ -78,28 +71,36 @@ export default class Board extends Component {
 
     render() {
         return (
-            <div>
-                <VerticalLayout>
+            <div className="panel">
+                <VerticalLayout >
+            
                     <Panel>
                         <div className='board'>
                         <HorizontalLayout>
+                        <SideBar/>
                             { this.state.bunches.map(bunch => (
                                         <div key={bunch._id}>
                                     <Panel>
-                                        <Bunch title={bunch.title} description={bunch.description} activityBunch={bunch.activityBunch} id={bunch._id}updatingActivity={this.handleUpdate}/>
+                                        <Bunch title={bunch.title} description={bunch.description} activityBunch={bunch.activityBunch} id={bunch._id}/>
                                     </Panel>
                                     </div>
                                 ))
+
+                                
                             }
+
+                <Button id='addBunch' onClick={this.handleAddBunchShow}>
+                    Adicionar Bunch
+                </Button>
+
                         </HorizontalLayout>    
+
                         
                         </div>
                     </Panel>
+    
                 </VerticalLayout>
 
-                <Button  onClick={this.handleAddBunchShow}>
-                    Adicionar Bunch
-                </Button>
 
                 <Modal show={this.state.showAddBunchModal} onHide={this.handleAddBunchClose}>
                 <Modal.Header closeButton>

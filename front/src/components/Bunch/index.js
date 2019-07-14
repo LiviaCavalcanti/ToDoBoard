@@ -3,7 +3,7 @@ import { DropdownButton, Dropdown, Form, Button, Modal } from 'react-bootstrap'
 
 import Activity from '../Activity'
 import api from '../../services/api';
-
+import './style.css'
 
 export default class Bunch extends Component {
     constructor(props) {
@@ -11,27 +11,20 @@ export default class Bunch extends Component {
         this.state = {
             showAddActivityModal: false,
             newActivityTitle: "",
-            newBunchDescription: ""
+            newActivityDescription: "",
+            activities: this.props.activityBunch
         }
 
-        // this.handleUpdate = this.handleUpdate.bind(this)
         this.handleAddActivityClose = this.handleAddActivityClose.bind(this)
         this.handleAddActivityShow = this.handleAddActivityShow.bind(this)
+        this.deleteActivity = this.deleteActivity.bind(this)
     }
 
-
-    // handleUpdate = async (newActivity) => {
-    //     const activityId = this.state.bunches.findIndex(( bunch => bunch.id == newActivity.id))
-    //     const bunches = [...this.state.bunches]
-    //     bunches[activityId] = newActivity
-    //     this.setState({bunches})
-
-    // }
 
     handleAddActivity = async () => {
         const newActivity = {
             title: this.state.newActivityTitle,
-            description: this.state.newBunchDescription
+            description: this.state.newActivityDescription
         }
 
         await api.post(`/activity/${this.props.id}`, newActivity)
@@ -54,6 +47,26 @@ export default class Bunch extends Component {
     handleChangeDescription = (e) =>{
         this.setState({newBunchDescription: e.target.value})
     }
+
+    deleteActivity = async (activityId) => {
+        
+        let activitiesCopy = this.state.activities.slice()
+        // codigo extremamente seboso abaixo
+        for(let i = 0; i < activitiesCopy.length; i++) {
+            if(activitiesCopy[i]._id === activityId){
+                activitiesCopy.splice(i,1)
+                break   
+            }
+        }
+
+        console.log(activitiesCopy)
+
+        this.setState({activities: activitiesCopy})
+
+        await api.delete(`/activity/${activityId}`)
+
+    }
+    
 
     render() {
         return (
@@ -93,9 +106,25 @@ export default class Bunch extends Component {
 
                     <h2>{this.props.title}</h2>
                     <p>{this.props.description}</p>
-                    {this.props.activityBunch.map( activity => (
+                    {this.state.activities.map( activity => (
                         <div key={activity._id}>
                         <Activity title={activity.title} description={activity.description} id={activity._id}/>
+                            <Button onClick={() => this.deleteActivity(activity._id)}>Delete example</Button>
+
+                {/* <Modal show={this.state.showDeleteModal} onHide={this.handleModalClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Apagar Atividade</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <p>Tem certeza que deseja apagar a atividade?</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.handleModalClose}>Cancelar</Button>
+                        <Button variant="primary" onClick={this.deleteActivity}>Apagar</Button>
+                    </Modal.Footer>
+                </Modal> */}
                         </div>
                     ))}
                 
@@ -104,4 +133,3 @@ export default class Bunch extends Component {
     }
 
 }
-
