@@ -1,13 +1,8 @@
-.board {
-    background: rgba(252, 249, 249, 0.918);
-    height: 800px;
-    width: 2000px;
-    padding: 8px;
-}
+
 
 .bunch {
     background: rgb(241, 234, 234);
-    width: 222px;
+    width: 230px;
     height: 750px;
     border: 3px solid white;
     padding: 5px;
@@ -16,13 +11,7 @@
     word-break: break-all;
 }
 
-.activity {
-    background: rgb(223, 215, 215);
-    font-size: 15px;
-    width: 210px;
-    height: 80px;
-    border: 1px solid white;
-    padding: 5px;
-    margin:  1px; 
-    word-break: break-all;
+
+#addBunch {
+    margin:  10px auto 10px 10px; 
 }
