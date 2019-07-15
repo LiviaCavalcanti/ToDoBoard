@@ -10,10 +10,7 @@ import './index.css'
 
 import { HorizontalLayout,
     VerticalLayout,
-    Panel,
-    Separator,
-    Spacer,
-    View } from "nice-react-layout";
+    Panel } from "nice-react-layout";
 import SideBar from '../SideBar';
 
 export default class Board extends Component {

@@ -1,8 +1,7 @@
 import React, {Component} from "react"
-import { Link, Route, BrowserRouter, Switch, withRouter} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 import './index.css'
-import Schedule from '../Schedule'
 
 class SideBar extends Component {
     render(){
@@ -13,7 +12,7 @@ class SideBar extends Component {
                         <Link to='./boards'>Board</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to='/planning'>Schedule</Link>
+                        <Link to='/schedule'>Schedule</Link>
                     </li>
                     <li class="nav-item">
                         <Link to='/'>Start</Link>
