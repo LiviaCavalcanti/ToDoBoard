@@ -1,11 +1,10 @@
-import React, { ReactDOM, Component} from 'react'
-import { Link, Route, BrowserRouter, Switch, withRouter} from 'react-router-dom';
+import React, { Component} from 'react'
+import { withRouter} from 'react-router-dom';
 import {ButtonGroup, Button} from 'react-bootstrap'
 
 
 import './index.css'
 import vanGoghFlowers from './teste.jpg';
-import Board from '../Board';
 
 
 class Start extends Component {
