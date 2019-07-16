@@ -1,3 +1,27 @@
-#ScheduleTable{
-    color:blue;
+.table{
+    /* color:blue; */
+    position: absolute;
+    left: 10%;
+    width: 80%;
+}
+
+.bar{
+    position: absolute;
+    width:120%;
+    height: 100%;
+}
+
+.schedule{
+    width: 1000px;
+    height: auto;
+    /* max-width: 1900px; */
+}
+
+.btn-primary.collapseBottom {
+    /* color:red; */
+    width: 150px;
+    position: absolute;
+    left: 87%;
+    top: 92%;
+
 }
