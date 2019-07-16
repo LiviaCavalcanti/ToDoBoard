@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { DropdownButton, Dropdown, Form, Button, Modal } from 'react-bootstrap'
+import {  Form, Button, Modal } from 'react-bootstrap'
 
 import Activity from '../Activity'
 import api from '../../services/api';
