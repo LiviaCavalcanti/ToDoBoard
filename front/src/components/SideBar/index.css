@@ -1,13 +1,28 @@
 .sidebar{
     height: 100%;
-    width: 4%;
+    width: 5%;
     background-color: #135DA7;
 }
 
 .icons {
-    height: 35px;
+    height: 30px;
+    padding:  0px 4px 0px;
 }
 
 .navLink{
-    color:#0C2338
+    color:#0C2338;
+    
+}
+
+.nav-item {
+    padding:  10px 0px 20px 5px;
+    font-size: 15px;
+}
+
+.nav-item:hover {
+    color: #135DA7;
+}
+
+.nav.flex-column {
+    padding: 150% 0px 0px;
 }
