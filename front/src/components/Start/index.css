@@ -3,22 +3,35 @@
     width: 50%;
 } */
 
-.backPaper {
+/* .backPaper {
     max-width: 1900px;
     width: 100%;
     height: auto;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-}
+} */
 
+.startPanel{
+    /* max-height: 1900px; */
+    height:980px;
+    /* width: 100%; */
+    
+    background-image: url("teste.jpg");
+
+}
 .startButtons{
     /* background-color:#135DA7;
     border-color: #ddd; */
     position: absolute;
     top:50%;
-    transform: translate(0%, -400%);
-    /* -ms-transform: translate(-50%, ); */
+    transform: translate(0%, 1200%);
+    height: 65px;
+    width:1300px;
+    align-self: center;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+        /* -ms-transform: translate(-50%, ); */
     /* width:10px; */
     /* padding: 12px 24px; */
 }
@@ -26,6 +39,11 @@
 button.startButton{
     background-color:#135DA7;
     border-color: #ddd;
+    font-weight: bold;
     /* position: absolute;
     width:15px; */
 }
+
+button.startButton:hover {
+    background-color: #0C2338;
+  }

@@ -14,8 +14,8 @@ class Start extends Component {
     render() {
       return (
       
-        <div className='container'>
-          <img src={vanGoghFlowers} alt="BackFlowers" className="backPaper"/>
+        <div className='startPanel'>
+          {/* <img src={vanGoghFlowers} alt="BackFlowers" className="backPaper"/> */}
 
           <div className="d-flex flex-column">
             <ButtonGroup size="lg" className='startButtons'>
@@ -25,7 +25,7 @@ class Start extends Component {
             </ButtonGroup>
           </div>
 
-        </div>
+         </div>
       );
     }  
 }
