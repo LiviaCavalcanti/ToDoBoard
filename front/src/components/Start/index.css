@@ -1,3 +1,8 @@
+/* .container{
+    position: relative;
+    width: 50%;
+} */
+
 .backPaper {
     max-width: 1900px;
     width: 100%;
@@ -5,4 +10,22 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
+}
+
+.startButtons{
+    /* background-color:#135DA7;
+    border-color: #ddd; */
+    position: absolute;
+    top:50%;
+    transform: translate(0%, -400%);
+    /* -ms-transform: translate(-50%, ); */
+    /* width:10px; */
+    /* padding: 12px 24px; */
+}
+
+button.startButton{
+    background-color:#135DA7;
+    border-color: #ddd;
+    /* position: absolute;
+    width:15px; */
 }
