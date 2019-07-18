@@ -2,28 +2,34 @@ import React, { Component } from 'react';
 import { Collapse, Button,  Card } from 'react-bootstrap';
 
 class CollapsedBoard extends Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = { collapse: false };
+  constructor() {
+    super();
+    
+    // Initial state
+    this.state = { open: false };
+    this.toggle=this.toggle.bind(this)
   }
 
-  toggle() {
-    this.setState(state => ({ collapse: !state.collapse }));
+   toggle() {
+    this.setState({
+      open: !this.state.open
+    });
   }
+render(){
+  return(
+    <div className= "container">
+       <Button className="btn" onClick={this.toggle} className='collapseBottom'>
+           Collapse Div
+       </Button>
 
-  render() {
-    return (
-      <div>
-        <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }} className='collapseBottom'>Toggle</Button>
-        <Collapse isOpen={this.state.collapse}>
-          <Card>
-            
-          </Card>
-        </Collapse>
-      </div>
+       <Collapse in={this.state.open} >
+           <div className= "content">
+              <p >Content when the button is clicked</p>
+           </div>
+       </Collapse>
+    </div>
     );
-  }
+   }
 }
 
 export default CollapsedBoard;
