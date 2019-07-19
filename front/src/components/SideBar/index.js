@@ -10,7 +10,7 @@ class SideBar extends Component {
     render(){
         return(
             <div className="sidebar">
-                <ul class="nav flex-column">
+                <ul className="nav flex-column">
                     <li className="nav-item">
                         <img src={boardImg} alt="boardIcon" className='icons'/>
                         <Link to='./boards' className='navLink'>Board</Link>
