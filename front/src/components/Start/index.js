@@ -3,8 +3,6 @@ import { withRouter} from 'react-router-dom';
 import {ButtonGroup, Button} from 'react-bootstrap'
 
 import './index.css'
-import vanGoghFlowers from './teste.jpg';
-
 
 class Start extends Component {
 
