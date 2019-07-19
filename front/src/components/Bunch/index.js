@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import {  Form, Button, Modal } from 'react-bootstrap'
+import {  Form, Button, Modal, Card } from 'react-bootstrap'
 
 import Activity from '../Activity'
 import api from '../../services/api';
 import './style.css'
+
+import garbageImg from './images/garbage.svg'
 
 export default class Bunch extends Component {
     constructor(props) {
@@ -70,63 +72,55 @@ export default class Bunch extends Component {
 
     render() {
         return (
-            <div className="bunch">
-                     <Button  onClick={this.handleAddActivityShow}>
-                        +
-                    </Button>
+            <div >
 
-                    <Modal show={this.state.showAddActivityModal} onHide={this.handleAddActivityClose}>
+                <Card className="bunch">
+                    <div>
+                        {/* <img src={addImg} alt="scheduleIcon" className='addIcon' onClick={this.handleAddActivityShow}/> */}
+                        
+                        <h4 className='bunchTitle'>{this.props.title}</h4>
+                        <Button  className='addButton' onClick={this.handleAddActivityShow}> + </Button>
+                    </div>
+                
+                    {/* <p>{this.props.description}</p> */}
+                    {this.state.activities.map( activity => (
+                        <div key={activity._id}>
+                            <Card.Body className="activity">
+                                <Activity title={activity.title} description={activity.description} id={activity._id}/>
+                                <img src={garbageImg} alt="scheduleIcon" className='activityIconsDelete' onClick={() => this.deleteActivity(activity._id)}/>
+                            </Card.Body>
+                        </div>
+                    ))}
+                    
+                </Card>
+
+                <Modal show={this.state.showAddActivityModal} onHide={this.handleAddActivityClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Adicionar atividade</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                    <Form>
-                                <Form.Label>Titulo</Form.Label>
-                                <Form.Control type="text" placeholder="Titulo da atividade" onChange={this.handleChangeTitle} />
-                                    
-
-                                <Form.Group controlId="formBasicPassword">
-                                    <Form.Label>Descrição</Form.Label>
-                                    <Form.Control type="text" placeholder="Descrição da atividade" onChange={this.handleChangeDescription} />
-                                </Form.Group>
-
+                        <Form>
+                            <Form.Label>Titulo</Form.Label>
+                            <Form.Control type="text" placeholder="Titulo da atividade" onChange={this.handleChangeTitle} />
                                 
-                                <Button variant="primary" type="submit" onClick={this.handleAddActivity}>
-                                    Criar
-                                </Button>
-                            </Form>
+
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Label>Descrição</Form.Label>
+                                <Form.Control type="text" placeholder="Descrição da atividade" onChange={this.handleChangeDescription} />
+                            </Form.Group>
+
+                            
+                            <Button variant="primary" type="submit" onClick={this.handleAddActivity}>
+                                Criar
+                            </Button>
+                        </Form>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleAddActivityClose}>
-                        Close
+                            Close
                         </Button>
-
                     </Modal.Footer>
-                    </Modal>
-
-                    <h2>{this.props.title}</h2>
-                    <p>{this.props.description}</p>
-                    {this.state.activities.map( activity => (
-                        <div key={activity._id}>
-                        <Activity title={activity.title} description={activity.description} id={activity._id}/>
-                            <Button onClick={() => this.deleteActivity(activity._id)}>Delete example</Button>
-
-                {/* <Modal show={this.state.showDeleteModal} onHide={this.handleModalClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Apagar Atividade</Modal.Title>
-                    </Modal.Header>
-
-                    <Modal.Body>
-                        <p>Tem certeza que deseja apagar a atividade?</p>
-                    </Modal.Body>
-
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleModalClose}>Cancelar</Button>
-                        <Button variant="primary" onClick={this.deleteActivity}>Apagar</Button>
-                    </Modal.Footer>
-                </Modal> */}
-                        </div>
-                    ))}
+                </Modal>              
                 
             </div>
         )
