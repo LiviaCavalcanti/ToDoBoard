@@ -3,9 +3,11 @@ import {  Table } from 'react-bootstrap'
 import './index.css'
 
 class ScheduleTable extends Component{
+
     render() {
+
         return(
-            <Table responsive striped hover >
+            <Table  style={{top: this.props.top + "%"}}>
                 <thead>
                     <tr>
                     <th> </th>
