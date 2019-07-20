@@ -19,6 +19,7 @@ module.exports = {
         bunch = await ActivityBunch.findById(req.params.bunchid)
 
         const newActivity = req.body
+        console.log(newActivity)
         newActivity.bunchid = req.params.bunchid
 
         const activity = await Activity.create(newActivity)
@@ -29,6 +30,7 @@ module.exports = {
         return res.json(activity)
     },
     async update(req, res) {
+        console.log(req.params)
         const activity = await Activity.findByIdAndUpdate(req.params.id, req.body, { new : true })
 
         return res.json(activity)
