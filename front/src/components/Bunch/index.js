@@ -77,9 +77,6 @@ export default class Bunch extends Component {
                 break   
             }
         }
-
-        console.log(activitiesCopy)
-
         this.setState({activities: activitiesCopy})
 
         await api.delete(`/activity/${activityId}`)
@@ -88,7 +85,6 @@ export default class Bunch extends Component {
     
 
     render() {
-        console.log(this.props.activityBunch)
         return (
             <div >
                     
