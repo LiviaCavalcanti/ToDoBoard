@@ -1,6 +1,18 @@
 .board {
     background: rgba(252, 249, 249, 0.918);
     height: 100vh;
-    width: auto;
+    width: 1900px;
+}
+
+.sidebarDiv{
+    width: 0px;
+}
+
+.bunchesBoard.container {
+    position: absolute;
+    width: 70%;
+    top: 2%;
+    left:11%;
+    background: rgba(252, 249, 249, 0.918);
 }
 
