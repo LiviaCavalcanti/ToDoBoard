@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../services/api';
 
-import {  Form, Button, Modal, ButtonGroup } from 'react-bootstrap'
+import {  Form, Button, Modal, ButtonGroup, Alert } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import editImg from './images/edit.svg'
@@ -55,7 +55,7 @@ export default class Activity extends Component {
             status: this.state.newStatus
         }
         
-        let result = await api.put(`/activity/${this.props.id}`, newActivity)
+        await api.put(`/activity/${this.props.id}`, newActivity)
         
         this.setState({showEditModal:false})
 
@@ -86,12 +86,12 @@ export default class Activity extends Component {
 
 
     render() {
-        console.log(this.props)
+        let alertVariant = this.props.status === "To Do" ? "success" : this.props.status === "Finished" ? "secundary" : "primary"
         return (
             <div >
                 <h4>{this.props.title}</h4>
                 <p>{this.props.description}</p>
-                <p>{this.props.status}</p>
+                <Alert className='statusAlert' variant = {alertVariant} >{this.props.status}</Alert>
                 <img src={editImg} alt="editIcon" className='activityIconsEdit' onClick={this.handleFormShow}/>
 
                 <Modal show={this.state.showEditModal} onHide={this.handleClose}>

@@ -9,3 +9,11 @@
     margin:  1px; 
     word-break: break-all;
 }
+
+.statusAlert{
+    border-radius:30px;
+    width:63px;
+    font-size: 10px;
+    padding: 2%;
+    text-align: center;
+}
