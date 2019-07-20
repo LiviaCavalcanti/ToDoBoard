@@ -2,8 +2,8 @@
 .activity {
     background: rgb(223, 215, 215);
     font-size: 15px;
-    width: 200px;
-    height: 200px;
+    min-width: 10px;
+    min-height: 100%;
     border: 1px solid white;
     padding: 5px;
     margin:  1px; 

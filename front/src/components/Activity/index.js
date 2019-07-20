@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import api from '../../services/api';
 
-import { DropdownButton, Dropdown, Form, Button, Modal } from 'react-bootstrap'
+import {  Form, Button, Modal } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
+import editImg from './images/edit.svg'
+
+
 export default class Activity extends Component {
 
     constructor(props, context) {
@@ -64,15 +67,10 @@ export default class Activity extends Component {
 
     render() {
         return (
-            <div className="activity">
+            <div >
                 <h4>{this.props.title}</h4>
                 <p>{this.props.description}</p>
-             <>
-                <DropdownButton title='...' variant="primary" >
-                    <Dropdown.Item onClick={this.handleFormShow}>Editar atividade</Dropdown.Item>
-                </DropdownButton>
-
-
+                <img src={editImg} alt="scheduleIcon" className='activityIconsEdit' onClick={this.handleFormShow}/>
 
                 <Modal show={this.state.showEditModal} onHide={this.handleClose}>
                 <Modal.Header closeButton>
@@ -101,9 +99,6 @@ export default class Activity extends Component {
 
                 </Modal.Footer>
                 </Modal>
-
-            </>
-
 
             </div>
         )
