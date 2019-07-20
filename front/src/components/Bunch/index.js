@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {  Form, Button, Modal, Card } from 'react-bootstrap'
+import {  Form, Button, Modal, Card, ButtonGroup } from 'react-bootstrap'
 
 import Activity from '../Activity'
 import api from '../../services/api';
@@ -14,7 +14,8 @@ export default class Bunch extends Component {
             showAddActivityModal: false,
             newActivityTitle: "",
             newActivityDescription: "",
-            activities: this.props.activityBunch
+            newActivityStatus: "To Do",
+            activities: this.props.activityBunch,
         }
 
         this.handleAddActivityClose = this.handleAddActivityClose.bind(this)
@@ -26,9 +27,10 @@ export default class Bunch extends Component {
     handleAddActivity = async () => {
         const newActivity = {
             title: this.state.newActivityTitle,
-            description: this.state.newActivityDescription
+            description: this.state.newActivityDescription,
+            status: this.state.newActivityStatus,
         }
-
+        
         await api.post(`/activity/${this.props.id}`, newActivity)
 
         this.setState({showEditModal:false})
@@ -48,6 +50,21 @@ export default class Bunch extends Component {
 
     handleChangeDescription = (e) =>{
         this.setState({newBunchDescription: e.target.value})
+    }
+
+    handleChangeActivityToDo = () => {
+        
+        this.setState({ newActivityStatus: "To Do" })
+        
+    }
+
+    handleChangeActivityFinished = () => {
+        this.setState({ newActivityStatus: "Finished" })
+    }
+
+
+    handleChangeActivityDoing = () => {
+        this.setState({ newActivityStatus: "In Progress" })
     }
 
     deleteActivity = async (activityId) => {
@@ -71,9 +88,10 @@ export default class Bunch extends Component {
     
 
     render() {
+        console.log(this.props.activityBunch)
         return (
             <div >
-
+                    
                 <Card className="bunch">
                     <div>
                         {/* <img src={addImg} alt="scheduleIcon" className='addIcon' onClick={this.handleAddActivityShow}/> */}
@@ -86,7 +104,7 @@ export default class Bunch extends Component {
                     {this.state.activities.map( activity => (
                         <div key={activity._id}>
                             <Card.Body className="activity">
-                                <Activity title={activity.title} description={activity.description} id={activity._id}/>
+                                <Activity title={activity.title} description={activity.description} id={activity._id} status={activity.status}/>
                                 <img src={garbageImg} alt="scheduleIcon" className='activityIconsDelete' onClick={() => this.deleteActivity(activity._id)}/>
                             </Card.Body>
                         </div>
@@ -109,6 +127,11 @@ export default class Bunch extends Component {
                                 <Form.Control type="text" placeholder="Descrição da atividade" onChange={this.handleChangeDescription} />
                             </Form.Group>
 
+                                <ButtonGroup size="sm" className="mt-3">
+                                    <Button onClick={this.handleChangeActivityToDo}>To Do</Button>
+                                    <Button onClick={this.handleChangeActivityDoing}>In Progress</Button>
+                                    <Button onClick={this.handleChangeActivityFinished}>Finished</Button>
+                                </ButtonGroup>
                             
                             <Button variant="primary" type="submit" onClick={this.handleAddActivity}>
                                 Criar
