@@ -1,8 +1,9 @@
 import React, { Component} from 'react'
 import { withRouter} from 'react-router-dom';
-import {ButtonGroup, Button} from 'react-bootstrap'
+import {Card} from 'react-bootstrap'
 
 import './index.css'
+import SideBar from '../SideBar'
 
 class Start extends Component {
 
@@ -13,16 +14,12 @@ class Start extends Component {
       return (
       
         <div className='startPanel'>
-          {/* <img src={vanGoghFlowers} alt="BackFlowers" className="backPaper"/> */}
 
-          <div className="d-flex flex-column">
-            <ButtonGroup size="lg" className='startButtons'>
-              <Button className='startButton' onClick={() => this.nextPath('/schedule') }>Schedule</Button>
-              <Button className='startButton' onClick={() => this.nextPath('/boards') }>Board</Button>
-              <Button className='startButton' onClick={() => this.nextPath('/') }>Start</Button>
-            </ButtonGroup>
-          </div>
 
+          <SideBar/>
+          <Card>
+
+          </Card>
          </div>
       );
     }  
