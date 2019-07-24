@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Collapse, Button,  Card } from 'react-bootstrap';
 import Bunch from '../Bunch'
-
+import DraggableBoard from '../DraggableBoard'
+import Draggable from '../Draggable'
 import api from '../../services/api';
+import Droppable from '../Droppable';
 
 class CollapsedBoard extends Component {
   constructor(props) {
@@ -39,28 +41,36 @@ class CollapsedBoard extends Component {
 render(){
   return(
     <div className= "container">
-       <Button className="btn" onClick={this.toggle} className='collapseBottom'  >
+       <Droppable style={{width:"400px", backgroundColor:"blue", height:"400px"}}>
+              
+                
+              <Draggable id="draggable-bunches">
+                  { this.state.bunches.map(bunch => (
+                                          <div key={bunch._id} >
+                                              <p>{bunch.title}</p>    
+                                          </div>
+                                      ))                           
+                  }
+
+                </Draggable>
+                
+              
+             </Droppable>
+       {/* <Button className="btn" onClick={this.toggle} className='collapseBottom'  >
            Collapse Div
        </Button>
 
        <Collapse in={this.state.open} >
            <div className= "content">
-             <Card>
-              <p >Content when the button is clicked</p>
-              <p >Content when the button is clicked</p>
-              <p >Content when the button is clicked</p>
-              <p >Content when the button is clicked</p>
-              <p >Content when the button is clicked</p>
-              <p >Content when the button is clicked</p>
-              { this.state.bunches.map(bunch => (
-                                    <div key={bunch._id}>
-                                      <p>{bunch.title}</p>    
-                                    </div>
-                                ))                           
-                            }
-             </Card>           
+             <Droppable>
+              <Card>
+                
+                <DraggableBoard bunches={this.state.bunches}/>
+                
+              </Card>           
+             </Droppable>
            </div>
-       </Collapse>
+       </Collapse> */}
     </div>
     );
    }

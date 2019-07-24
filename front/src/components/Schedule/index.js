@@ -22,9 +22,9 @@ class Schedule extends Component {
         var topValue=this.state.tableTop
         return(
             <div className='schedule'>
-                <div className='bar'>
+                {/* <div className='bar'>
                 <SideBar />
-                </div>
+                </div> */}
                               
                 <ScheduleTable top={topValue}/>
                 <CollapsedBoard tableTop={this.state.tableTop} onChange={this.changeTableTop}className='collapse'/>
