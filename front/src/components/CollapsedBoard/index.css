@@ -1,0 +1,15 @@
+p.dragBunch {
+    position:relative;
+    color: white;
+    background-color: rgb(45, 119, 230);
+    width:50px;
+    border-radius: 12%;
+    left: 1%;
+    bottom:1%;
+}
+
+.container{
+    min-height: 20%;
+    position: relative;
+    left: 14%;
+}

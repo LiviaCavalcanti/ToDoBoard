@@ -6,6 +6,7 @@ import Draggable from '../Draggable'
 import api from '../../services/api';
 import Droppable from '../Droppable';
 
+import './index.css'
 class CollapsedBoard extends Component {
   constructor(props) {
     super(props);
@@ -41,36 +42,23 @@ class CollapsedBoard extends Component {
 render(){
   return(
     <div className= "container">
-       <Droppable style={{width:"400px", backgroundColor:"blue", height:"400px"}}>
-              
-                
-              <Draggable id="draggable-bunches">
-                  { this.state.bunches.map(bunch => (
-                                          <div key={bunch._id} >
-                                              <p>{bunch.title}</p>    
-                                          </div>
-                                      ))                           
-                  }
-
-                </Draggable>
-                
-              
-             </Droppable>
-       {/* <Button className="btn" onClick={this.toggle} className='collapseBottom'  >
+      <Button className="btn" onClick={this.toggle} className='collapseBottom'  >
            Collapse Div
-       </Button>
-
-       <Collapse in={this.state.open} >
-           <div className= "content">
-             <Droppable>
-              <Card>
-                
-                <DraggableBoard bunches={this.state.bunches}/>
-                
-              </Card>           
-             </Droppable>
-           </div>
-       </Collapse> */}
+      </Button>
+      <Collapse in={this.state.open} >
+        <Card>
+        <Droppable>
+          { this.state.bunches.map(bunch => (
+              <Draggable id={bunch._id} >
+                  <p className="dragBunch">{bunch.title}</p>
+              </Draggable>
+            ))                           
+          }                   
+        </Droppable>
+        </Card>        
+        
+      </Collapse>
+       
     </div>
     );
    }

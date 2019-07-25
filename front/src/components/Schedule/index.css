@@ -21,9 +21,18 @@
 .btn-primary.collapseBottom {
     /* color:red; */
     width: 150px;
-    position: absolute;
+    position: relative;
     left: 87%;
-    top: 2%;
+    top: 80px;
     
 
+}
+
+.collapse {
+    position: absolute;
+    left:50px;
+    background-color: rgb(189, 186, 186);
+    width: 800px;
+    min-height: 80px;
+    top:5%;
 }

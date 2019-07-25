@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {  Table } from 'react-bootstrap'
 import './index.css'
-
+import Droppable from '../Droppable'
 class ScheduleTable extends Component{
 
     render() {
@@ -21,7 +21,10 @@ class ScheduleTable extends Component{
                 <tbody>
                     <tr>
                     <td>08:00-10:00</td>
-                    <td> </td>
+                    <Droppable>
+                        <td> </td>
+                    </Droppable>
+                    
                     <td> </td>
                     <td> </td>
                     <td> </td>
@@ -31,7 +34,7 @@ class ScheduleTable extends Component{
                     <td>10:00-12:00</td>
                     <td> </td>
                     <td> </td>
-                    <td> </td>
+                    <td> </td>q
                     <td> </td>
                     <td> </td>
                     </tr>
