@@ -11,6 +11,10 @@ const ActivitySchema = new mongoose.Schema({
     bunchid:{
         type: mongoose.Schema.Types.ObjectId, 
         ref: "ActivityBunch"
+    },
+    status: {
+        type: String, 
+        enum: ['To Do', 'In Progress', 'Finished'] 
     }
 })
 

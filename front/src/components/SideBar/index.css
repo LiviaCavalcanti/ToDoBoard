@@ -1,12 +1,12 @@
 .sidebar{
     height: 100%;
-    width: 5%;
+    width: 8%;
     background-color: #135DA7;
 }
 
 .icons {
     height: 30px;
-    padding:  0px 4px 0px;
+    padding:  0px 8px 0px;
 }
 
 .navLink{
@@ -15,14 +15,15 @@
 }
 
 .nav-item {
-    padding:  10px 0px 20px 5px;
+    padding:  13px 0px 20px 7px;
     font-size: 15px;
 }
 
 .nav-item:hover {
-    color: #135DA7;
+    background-color: white;
 }
 
 .nav.flex-column {
     padding: 150% 0px 0px;
 }
+
