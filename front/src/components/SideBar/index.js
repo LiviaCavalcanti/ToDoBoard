@@ -19,7 +19,7 @@ class SideBar extends Component {
                         <img src={planImg} alt="planIcon" className='icons'/>
                         <Link to='/schedule' className='navLink'>Schedule</Link>
                     </li>
-                    <li className="nav-item">
+                    <li  className="nav-item">
                         <img src={scheduleImg} alt="scheduleIcon" className='icons'/>
                         <Link to='/' className='navLink'>Start</Link>
                     </li>
