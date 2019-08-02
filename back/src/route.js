@@ -15,9 +15,9 @@ routes.get('/activity/:id', ActivityController.show)
 routes.post('/activity/:bunchid', ActivityController.store)
 routes.delete('/activity/:id', ActivityController.destroy)
 
-routes.put('/scheduledActivity/:id', ActivityController.update)
-routes.get('/scheduledActivity/:id', ActivityController.show)
-routes.post('/scheduledActivity/:bunchid', ActivityController.store)
-routes.delete('/scheduledActivity/:id', ActivityController.destroy)
+routes.put('/scheduledActivity/:id', scheduledActivityController.update)
+routes.get('/scheduledActivity', scheduledActivityController.index)
+routes.post('/scheduledActivity/:bunchid', scheduledActivityController.store)
+// routes.delete('/scheduledActivity/:id', scheduledActivityController.destroy)
 
 module.exports = routes
