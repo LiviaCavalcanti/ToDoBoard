@@ -6,11 +6,11 @@ const ScheduledActivitySchema = new mongoose.Schema({
         required: true
     },
     endTime:{
-        type: Date,
+        type: String,
         required: true
     },
     day:{
-        type: Date,
+        type: String,
         required: true
     },
     bunchid:{
