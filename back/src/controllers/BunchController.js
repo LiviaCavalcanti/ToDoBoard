@@ -16,16 +16,25 @@ module.exports = {
 
         return res.json(completeBunches)
     },
+
+    async shou(req, res) {
+        const bunch = await ActivityBunch.findById(req.params.id)
+
+        return res.json(bunch)
+    },
+    
     async store(req, res) {
         const bunch = await ActivityBunch.create(req.body)
 
         return res.json(bunch)
-    },
+    }, 
+
     async update(req, res) {
         const bunch = await ActivityBunch.findByIdAndUpdate(req.params.id, req.body, { new: true})
 
         return res.json(bunch)
     },
+    
     async findBunch(req,res) {
         const bunch = await ActivityBunch
                             .findById(req.params.id)
