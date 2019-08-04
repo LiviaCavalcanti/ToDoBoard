@@ -17,7 +17,7 @@ module.exports = {
         return res.json(completeBunches)
     },
 
-    async shou(req, res) {
+    async show(req, res) {
         const bunch = await ActivityBunch.findById(req.params.id)
 
         return res.json(bunch)
