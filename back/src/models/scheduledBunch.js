@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const ScheduledActivitySchema = new mongoose.Schema({
+const ScheduledBunchSchema = new mongoose.Schema({
     startTime:{
         type: String,
         required: true
@@ -13,10 +13,11 @@ const ScheduledActivitySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    bunchid:{
+    bunchId:{
         type: mongoose.Schema.Types.ObjectId, 
+        required: true,
         ref: "ActivityBunch"
     }
 })
 
-mongoose.model('ScheduledActivity', ScheduledActivitySchema)
+mongoose.model('ScheduledBunch', ScheduledBunchSchema)
